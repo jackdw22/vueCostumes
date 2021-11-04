@@ -1,9 +1,42 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class = "nav">
+    <div class="pure-menu pure-menu-horizontal">
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item">
+                <router-link to="/" class="pure-menu-link">
+                  <h3>Christy's Costumes</h3>
+                </router-link>
+            </li>
+            <li class="pure-menu-item">
+                <router-link to="/about" class="pure-menu-link">
+                  <p>About Us</p>
+                </router-link>
+            </li>
+            <li class="pure-menu-item">
+                <router-link to="/contact" class="pure-menu-link"> 
+                  <p>Contact Us!</p>
+                </router-link>
+            </li>
+
+            <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                <a href="#" id="menuLink1" class="pure-menu-link">Shop</a>
+                <ul class="pure-menu-children">
+                    <li class="pure-menu-item">
+                        <router-link to="/hats"> 
+                          <p>Witch Hats</p>
+                        </router-link>
+                    </li>
+                    <li class="pure-menu-item">
+                        <router-link to="/costumes"> 
+                          <p>Costumes</p>
+                        </router-link>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
+    </div> 
     <router-view />
   </div>
 </template>
