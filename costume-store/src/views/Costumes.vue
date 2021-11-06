@@ -12,7 +12,7 @@ export default {
     },
     computed: {
         costumes(){
-            return this.$root.$data.costumes;
+            return this.$root.$data.costumes.filter(costume => costume.type === "costume");
         }
     },
 }

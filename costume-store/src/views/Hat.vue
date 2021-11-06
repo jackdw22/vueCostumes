@@ -1,6 +1,6 @@
 <template>
        <costumeList :costumes="costumes" />
-    
+
 </template>
 
 <script>
@@ -12,7 +12,7 @@ export default {
     },
     computed: {
         costumes(){
-            return this.$root.$data.costumes.filter(costume => costume.type === "hat")
+            return this.$root.$data.costumes.filter(costume => costume.type === "hat");
         }
     },
 }

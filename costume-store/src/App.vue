@@ -20,8 +20,9 @@
             <router-link to="/contact" class="pure-menu-link">
               <p>Contact Us</p>
             </router-link>
-            <router-link to="/contact" class="pure-menu-link">
+            <router-link to="/checkout" class="pure-menu-link">
               <i class="fas fa-shopping-bag"></i>
+              <div>{{size}} </div>
             </router-link>
       </div>
     </nav>
@@ -34,10 +35,19 @@
 export default{
   computed: {
     size(){
-      return this.$root.$data.costumes.length;
+      return this.$root.$data.bag.length;
     }
   }
 }
+
+/*
+#3e1c33 - Dark Purple
+#602749 - Light Purple
+#b14623 - Darker orange
+#f6921d - Lighter orange
+*/
+
+
 
 
 </script>

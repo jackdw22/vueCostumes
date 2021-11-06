@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Hat from "../views/Hat.vue"
 import Costumes from "../views/Costumes.vue"
+import Checkout from "../views/Checkout.vue"
 
 
 Vue.use(VueRouter);
@@ -31,6 +32,11 @@ const routes = [
     path: "/costumes",
     name: "Costumes",
     component: Costumes,
+  },
+  {
+    path: "/checkout",
+    name: "Checkout",
+    component: Checkout,
   },
 ];
 

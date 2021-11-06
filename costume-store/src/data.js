@@ -1,52 +1,75 @@
 let mock = [{
     id: 1,
     type: "hat",
-    name: "Bone Witch Hat",
-    price: "$40.00",
-    rent: "$5.00",
-    image: "boneHat.jpg",
+    name: "Bone Witch",
+    price: "40.00",
+    rent: "5.00",
+    image: 'boneHat.jpg'
 },
 {
     id: 2,
     type: "hat",
-    name: "Candy Witch Hat",
-    price: "$60.00",
-    rent: "$5.00",
-    image: "candyHat.jpg",
+    name: "Candy Witch",
+    price: "60.00",
+    rent: "5.00",
+    image: 'candyHat.jpg'
+},
+{
+    id: 3,
+    type: "hat",
+    name: "Poison Witch",
+    price: "69.99",
+    rent: "5.00",
+    image: 'poisonHat.jpg'
 },
 {
     id: 4,
     type: "hat",
-    name: "Poison Witch Hat",
-    price: "$69.99",
-    rent: "$5.00",
-    image: "poisonHat.jpg",
+    name: "Purple Witch",
+    price: "40.00",
+    rent: "5.00",
+    image: 'purpleHat.jpg'
 },
 {
     id: 5,
     type: "hat",
-    name: "Purple Witch Hat",
-    price: "$40.00",
-    rent: "$5.00",
-    image: "purpleHat.jpg",
+    name: "Drama Queen",
+    price: "75.00",
+    rent: "5.00",
+    image: 'witchHat.jpg'
 },
 {
     id: 6,
-    type: "hat",
-    name: "Drama Queen Witch Hat",
-    price: "$75.00",
-    rent: "$5.00",
-    image: "witchHat2.jpg",
+    type: "costume",
+    name: "Biker",
+    price: "40.00",
+    rent: "5.00",
+    image: 'biker.jpg'
 },
 {
     id: 7,
     type: "costume",
-    name: "Biker",
-    price: "$40.00",
-    rent: "$5.00",
-    image: "biker.jpg",
+    name: "Mailman",
+    price: "70.00",
+    rent: "15.00",
+    image: 'mailman.jpg'
 },
-
+{
+    id: 8,
+    type: "costume",
+    name: "Tinman",
+    price: "45.00",
+    rent: "10.00",
+    image: 'tinman.jpg'
+},
+{
+    id: 9,
+    type: "costume",
+    name: "Zombie",
+    price: "50.00",
+    rent: "15.00",
+    image: 'zombie.jpg'
+},
 ]
 
 export default mock;
