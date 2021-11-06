@@ -3,31 +3,29 @@
     <div id="welcome">
       <img src="../assets/images/home/witches.jpg" alt="witches" class="pure-img">
       <h1>Welcome to Christy's Costumes</h1>
-    </div>
+  </div>
     <div class="otherPages">
     <div class="otherPage">
-      <a href="pages/hat.html">
+      <router-link to="/hats">
         <img src="../assets/images/home/witchHat.jpg" alt="witchHat">
         <h3>Witch Hats</h3>
         <p>Who said witches have to be scary? Witches can be hippies, fabously pink, or anything else! Choose one of our homemade witch hats or request your own to add a fun twist to being a witch</p>
-      </a>
+      </router-link>
     </div>
     <div class="otherPage">
-      <a href="pages/costumes.html">
-      <img src="../assets/images/home/mike.jpg" alt="two boys dressed up">
-      <h3>Shop Costumes</h3>
-      <p>View the whole collection and become your favorite hero, tv character, or even monster!</p>
-</a>
+      <router-link to="/costumes">
+        <img src="../assets/images/home/mike.jpg" alt="two boys dressed up">
+        <h3>Shop Costumes</h3>
+        <p>View the whole collection and become your favorite hero, tv character, or even monster!</p>
+      </router-link>
     </div>
     <div class="otherPage">
-      <a href="pages/about.html">
-      <img src="../assets/images/home/Christy.jpg" alt="Christy and Lexi">
-      <h3>Who we are</h3>
-      <p>We love the happiest and spookiest time of the year, Halloween. Click below to learn more about us and our story!</p>
-</a>
+       <router-link to="/about">
+        <img src="../assets/images/home/Christy.jpg" alt="Christy and Lexi">
+        <h3>Who we are</h3>
+        <p>We love the happiest and spookiest time of the year, Halloween. Click below to learn more about us and our story!</p>
+       </router-link>
     </div>
-
-
   </div>
 
   </div>
@@ -74,19 +72,7 @@ p{
     grid-gap: 20px;
     margin: 20px;
   }
-  .othe img{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
 }
 
-a{
-  text-decoration: none;
-  color: black;
-}
-a:hover{
-  color: orange;
-  font-weight: bold;
-}
+
 </style>

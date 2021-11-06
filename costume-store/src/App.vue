@@ -11,9 +11,6 @@
           <router-link to="/about" class="pure-menu-link">
             <p>About</p>
           </router-link>
-          <router-link to="/contact" class="pure-menu-link">
-            <p>Contact Us!</p>
-          </router-link>
            <router-link to="/hats" class="pure-menu-link">
               <p>Witch Hats</p>
            </router-link>
@@ -21,11 +18,17 @@
               <p>Costumes</p>
             </router-link>
             <router-link to="/contact" class="pure-menu-link">
+              <p>Contact Us</p>
+            </router-link>
+            <router-link to="/contact" class="pure-menu-link">
               <i class="fas fa-shopping-bag"></i>
             </router-link>
       </div>
     </nav>
     <router-view />
+    <div>
+      <h1>hello</h1>
+    </div>
   </div>
 </template>
 
@@ -52,6 +55,10 @@ export default{
 
 #nav {
   padding: 30px;
+  
+}
+nav{
+  background-color: lightgray; 
 }
 
 #nav a {
