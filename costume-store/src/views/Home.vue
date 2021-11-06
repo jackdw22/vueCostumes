@@ -42,6 +42,15 @@ export default {
 </script>
 
 <style scoped>
+
+a{
+  text-decoration: none;
+  color: black;
+}
+a:hover{
+  color: orange;
+  font-weight: bold;
+}
   img{
     max-width: 80%;
     margin: 0 auto;

@@ -3,7 +3,7 @@
         <div class="costumes">
             <div class="costume" v-for="costume in costumes" :key="costume.id">
                 <div class="info">
-                    <h1>{{costume.name}}</h1>
+                    <h1>{{costume.name}}test</h1>
                 </div>
                 <div class="image">
                     <img :src="'shop/'+costume.image">
@@ -35,7 +35,7 @@ export default {
 .costume{
   margin: 10px;
   margin-top: 50px;
-  width: 200px; 
+  width: 200px;
 }
 
 

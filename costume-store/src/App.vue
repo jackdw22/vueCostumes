@@ -26,9 +26,7 @@
       </div>
     </nav>
     <router-view />
-    <div>
-      <h1>hello</h1>
-    </div>
+
   </div>
 </template>
 
@@ -55,10 +53,10 @@ export default{
 
 #nav {
   padding: 30px;
-  
+
 }
 nav{
-  background-color: lightgray; 
+  background-color: lightgray;
 }
 
 #nav a {
