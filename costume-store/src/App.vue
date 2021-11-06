@@ -27,7 +27,20 @@
       </div>
     </nav>
     <router-view />
+    <div class='footer'>
+      <div class = 'footPart'>
+        <p>Jacob Richmond / Jack Wheatley</p>
+        <p>#111-222-3333</p>
+      </div>
+      <div class='footPart'>
+        <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+        <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+        <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+    
 
+   
+    </div>
+  </div>
   </div>
 </template>
 
@@ -136,4 +149,23 @@ nav{
     margin-top: 15px;
     font-size: 13pt;
   }
+  .footPart{
+    text-align:center; 
+    margin: auto; 
+  }
+
+  .footPart a{
+    color: inherit;
+    width: 20px; 
+  }
+
+  @media (min-width: 700px) {
+  .footer{
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-gap: 20px;
+    margin: 20px;
+  }
+}
+
 </style>

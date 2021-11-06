@@ -18,11 +18,9 @@
           <p>The Queen of Halloween herself. The only thing she loves more than Halloween is helping others find the perfect Halloween costumes for individuals, couples, and whole families</p>
       </div>
       <div class="otherPage">
-        <router-link to="/costumes">
         <h2>James</h2>
           <img src="../assets/images/home/mike.jpg" alt="two boys dressed up" class="pure-img">
           <p>The muscle behind the whole organization. This guy has been there for Christy since day one lifting bins, trying on costumes, and providing capital</p>
-        </router-link>
       </div>
       <div class="otherPage">
           <h2>The Kids</h2>
