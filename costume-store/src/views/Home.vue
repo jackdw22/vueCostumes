@@ -38,14 +38,15 @@
 
 export default {
   name: "Home",
-  
+
+
 };
 </script>
 
 <style scoped>
   img{
     max-width: 80%;
-    margin: 0 auto; 
+    margin: 0 auto;
   }
 
   h3{
@@ -86,6 +87,6 @@ a{
 }
 a:hover{
   color: orange;
-  font-weight: bold; 
+  font-weight: bold;
 }
 </style>
