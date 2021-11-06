@@ -1,5 +1,6 @@
 <template>
     <div class='wrapper'>
+      <div class="better">
         <div class="costumes">
             <div class="costume" v-for="costume in costumes" :key="costume.id">
                 <div class="info">
@@ -16,10 +17,18 @@
                 <button class="auto" @click="rem(costume)">Remove</button>
             </div>
         </div>
+      </div>
         <hr>
         <div class="checkout">
           <div class="item" v-for="costume in costumes" :key="costume.id">
           <p class="line">  {{costume.sale}} {{costume.name}}:  ${{getPrice(costume)}}</p>
+          </div>
+          <div>
+          <p class="price"> Total: ${{getTotal()}}</p>
+          </div>
+          <div class="toggle">
+            <button class="auto" @click="rentAll()">Rent All</button>
+            <button class="auto" @click="buyAll()">Buy All</button>
           </div>
         </div>
     </div>
@@ -57,9 +66,37 @@ export default {
         else{
           return item.price;
         }
+      },
+      getTotal(){
+        let price = 0;
+        for (const item of this.$root.$data.bag){
+          if (item.sale==="Buying"){
+            price += parseFloat(item.price);
 
+          }
+          else{
+            price += parseFloat(item.rent);
+          }
+        }
 
+        return price;
+      },
+    buyAll(){
+      for (const item of this.$root.$data.bag){
+        let index = this.$root.$data.bag.findIndex((ite) => item === ite);
+        this.$root.$data.bag[index].sale="Buying";
+        this.$root.$data.bag.push("update");
+        this.$root.$data.bag.pop();
       }
+    },
+    rentAll(){
+      for (const item of this.$root.$data.bag){
+        let index = this.$root.$data.bag.findIndex((ite) => item === ite);
+        this.$root.$data.bag[index].sale="Renting";
+        this.$root.$data.bag.push("update");
+        this.$root.$data.bag.pop();
+      }
+    }
     },
     computed: {
 
@@ -71,6 +108,11 @@ export default {
 <style scoped>
     .wrapper {
 
+  align-items: center;
+  justify-content: center;
+}
+.better{
+  display: flex;
   align-items: center;
   justify-content: center;
 }
