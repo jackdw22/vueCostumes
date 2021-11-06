@@ -1,5 +1,6 @@
 <template>
     <div class='wrapper'>
+      <div class="better">
         <div class="costumes">
             <div class="costume" v-for="costume in costumes" :key="costume.id">
                 <div class="info">
@@ -16,10 +17,14 @@
                 <button class="auto" @click="rem(costume)">Remove</button>
             </div>
         </div>
+      </div>
         <hr>
         <div class="checkout">
           <div class="item" v-for="costume in costumes" :key="costume.id">
           <p class="line">  {{costume.sale}} {{costume.name}}:  ${{getPrice(costume)}}</p>
+          </div>
+          <div>
+          <p class="price"> Total: {{getTotal()}}</p>
           </div>
         </div>
     </div>
@@ -57,8 +62,19 @@ export default {
         else{
           return item.price;
         }
-
-
+      },
+      getTotal(){
+        let price = 0;
+        for (const item of this.$root.$data.bag){
+          if (item.sale==="Buying"){
+            price += parseInt(item.price);
+          }
+          else{
+            price += parseInt(item.rent);
+          }
+        }
+        price+= .12;
+        return price;
       }
     },
     computed: {
@@ -71,6 +87,11 @@ export default {
 <style scoped>
     .wrapper {
 
+  align-items: center;
+  justify-content: center;
+}
+.better{
+  display: flex;
   align-items: center;
   justify-content: center;
 }

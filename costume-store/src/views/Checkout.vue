@@ -1,6 +1,10 @@
 <template>
+  <div v-if="this.$root.$data.bag.length!==0">
        <bagList :costumes="bag" />
-
+  </div>
+  <div v-else>
+    <h1> Your Cart is Empty </h1>
+  </div>
 </template>
 
 <script>
