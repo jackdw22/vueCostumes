@@ -38,6 +38,14 @@ let mock = [{
     rent: "$5.00",
     image: "witchHat2.jpg",
 },
+{
+    id: 7,
+    type: "costume",
+    name: "Biker",
+    price: "$40.00",
+    rent: "$5.00",
+    image: "biker.jpg",
+},
 
 ]
 
