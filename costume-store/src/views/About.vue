@@ -4,7 +4,7 @@
     <div class = 'info'>
         <h2>Family, Fun, and Costumes</h2>
         <p>It all started 20 years ago when Christy and James got their first costumes as a married couple and over the years that costume collection has continued to grow and grow. Overtime friends and family started asking Christy for costumes every year so she decided to the collection with everyone!</p>
-        <div id="toStore"> 
+        <div id="toStore">
           <router-link to="/costumes" id="hype">
               <p>Check out the Collection!</p>
           </router-link>
@@ -18,28 +18,26 @@
           <p>The Queen of Halloween herself. The only thing she loves more than Halloween is helping others find the perfect Halloween costumes for individuals, couples, and whole families</p>
       </div>
       <div class="otherPage">
-        <router-link to="/costumes">
         <h2>James</h2>
           <img src="../assets/images/home/mike.jpg" alt="two boys dressed up" class="pure-img">
           <p>The muscle behind the whole organization. This guy has been there for Christy since day one lifting bins, trying on costumes, and providing capital</p>
-        </router-link>
       </div>
       <div class="otherPage">
           <h2>The Kids</h2>
           <img src="../assets/images/home/Christy.jpg" alt="Christy and Lexi" class="pure-img">
           <p>From models to delivery the kids fill many hats wherever Christy needs them. They love Halloween and pride themselves on having the best costumes at every party</p>
-        
+
       </div>
   </div>
-  <div id="toStore"> 
+  <div id="toStore">
     <router-link to="/costumes" id="hype">
-        <p>Contact us!</p>
+        <p>Start Shopping!</p>
     </router-link>
   </div>
 
     </div>
-  
-  
+
+
 </template>
 
 
@@ -49,22 +47,22 @@
 
 .info{
   background-color:lightgray;
-  padding: 20px; 
+  padding: 20px;
 }
 
 #toStore{
-  background-color: white; 
+  background-color: white;
   width: 70%;
-  margin: 0 auto;  
+  margin: 0 auto;
   font-size: 20pt;
-  color: black; 
-  border: 2px solid black; 
+  color: black;
+  border: 2px solid black;
 
 }
 
 #hype {
-  margin: auto; 
-  text-decoration: none; 
+  margin: auto;
+  text-decoration: none;
 }
 
 .otherPage img{
@@ -76,7 +74,7 @@
 }
 
 .otherPage h2{
-  padding-top: 15px; 
+  padding-top: 15px;
 }
 
 @media (min-width: 700px) {
@@ -90,9 +88,9 @@
 
 #mainImg{
     max-width: 80%;
-    margin: 0 auto; 
+    margin: 0 auto;
     padding-bottom: 8%;
-    padding-top: 6%; 
+    padding-top: 6%;
   }
 }
 

@@ -17,9 +17,6 @@
            <router-link to="/costumes" class="pure-menu-link">
               <p>Costumes</p>
             </router-link>
-            <router-link to="/contact" class="pure-menu-link">
-              <p>Contact Us</p>
-            </router-link>
             <router-link to="/checkout" class="pure-menu-link">
               <i class="fas fa-shopping-bag"></i>
               <div>{{size}} </div>
