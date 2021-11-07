@@ -26,7 +26,7 @@ export default {
       add(item){
         item.sale="Buying";
         let index = this.$root.$data.bag.findIndex((ite) => item === ite);
-        console.log(index);
+        
         if (index===-1){
         this.$root.$data.bag.push(item);
       }

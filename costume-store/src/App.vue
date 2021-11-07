@@ -30,12 +30,12 @@
         <p>#111-222-3333</p>
       </div>
       <div class='footPart'>
-        <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
-        <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-        <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-    
+        <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fab fa-3x fa-facebook"></i></a>
+        <a href="http://https://github.com/jackdw22/vueCostumes" target="_blank" rel="noopener noreferrer"><i class="fab fa-3x fa-github"></i></a>
+        <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fab fa-3x fa-instagram"></i></a>
 
-   
+
+
     </div>
   </div>
   </div>
@@ -94,6 +94,12 @@ nav{
   justify-content: space-between;
 
 }
+.footer{
+  background-color: #602749;
+}
+.footPart{
+  color: #f6921d;
+}
 
 #hamItems{
   display:flex;
@@ -147,13 +153,13 @@ nav{
     font-size: 13pt;
   }
   .footPart{
-    text-align:center; 
-    margin: auto; 
+    text-align:center;
+    margin: auto;
   }
 
   .footPart a{
     color: inherit;
-    width: 20px; 
+    width: 20px;
   }
 
   @media (min-width: 700px) {

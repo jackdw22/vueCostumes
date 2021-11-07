@@ -4,6 +4,9 @@
   </div>
   <div v-else>
     <h1> Your Cart is Empty </h1>
+    <router-link to="/costumes">
+      <h2>Start Shopping</h2>
+    </router-link>
   </div>
 </template>
 
