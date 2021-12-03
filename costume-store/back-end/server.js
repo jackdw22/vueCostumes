@@ -48,6 +48,7 @@ app.post('/api/testme', async (req, res) => {
   console.log('made it to test');
   console.log('given this');
   console.log(req.body);
+  res.sendStatus(200);
 });
 
 app.post('/api/items', async (req, res) => {
