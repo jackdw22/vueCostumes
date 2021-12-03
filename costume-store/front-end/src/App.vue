@@ -8,6 +8,9 @@
       <input type="checkbox"  id="hamburger"/>
 
       <div id="hamItems">
+        <router-link to="/admin" class="pure-menu-link">
+          <p>Admin</p>
+        </router-link>
           <router-link to="/about" class="pure-menu-link">
             <p>About</p>
           </router-link>

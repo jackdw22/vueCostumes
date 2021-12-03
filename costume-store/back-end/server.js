@@ -28,13 +28,14 @@ const itemSchema = new mongoose.Schema({
   name: String,
   price: String,
   rent: String,
-  image: String,
+  path: String,
   type: String,
 });
 
 const Item = mongoose.model('Item', itemSchema);
 
 app.post('/api/photos', upload.single('photo'), async (req, res) => {
+  console.log('made it to post photos');
   if(!req.file) {
     return res.sendStatus(400);
   }
@@ -43,10 +44,20 @@ app.post('/api/photos', upload.single('photo'), async (req, res) => {
   });
 });
 
+app.post('/api/testme', async (req, res) => {
+  console.log('made it to test');
+  console.log('given this');
+  console.log(req.body);
+});
+
 app.post('/api/items', async (req, res) => {
   const item = new Item({
-    title: req.body.title,
+    type: req.body.type,
+    name: req.body.name,
+    price: req.body.price,
+    rent: req.body.rent,
     path: req.body.path,
+
     description: req.body.description,
   });
   try {
