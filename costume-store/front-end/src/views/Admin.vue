@@ -14,7 +14,7 @@
           </div>
           <div class="pure-g">
             <p class="pure-u">Title:  </p>
-          <input class="pure-u" v-model="title" placeholder="Title">
+          <input class="pure-u" v-model="name" placeholder="Title">
         </div>
         <div class="pure-g">
           <p class="pure-u">Price:</p>
@@ -35,8 +35,7 @@
       </div>
     </div>
   </div>
-<!-- for some reason this site can't reach the server. Server runs and is responsive using
-curl -d but can't access through here-->
+
 
 </template>
 <style scoped>
@@ -66,19 +65,22 @@ export default {
         this.file = event.target.files[0];
       },
       async addItem(){
-      await axios.post('/api/testme',"hello!");
-      /*const formData = new FormData();
+    //  await axios.post('/api/testme',this.name);
+      const formData = new FormData();
       formData.append('photo', this.file, this.file.name)
+      console.log('herehere');
        let r1 = await axios.post('/api/photos', formData);
-       let r2 = await axios.post('/api/items"',{
+       console.log('postyyy');
+       let r2 = await axios.post('/api/items',{
           type: this.type,
           name: this.name,
           price: this.price,
           rent: this.rent,
           path: r1.data.path
         });
+        console.log(r1.data.path);
         return r2;
-        console.log(r1.data.path);*/
+
       }
     },
     components: {

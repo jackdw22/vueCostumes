@@ -35,7 +35,7 @@ const itemSchema = new mongoose.Schema({
 const Item = mongoose.model('Item', itemSchema);
 
 app.post('/api/photos', upload.single('photo'), async (req, res) => {
-  console.log('made it to post photos');
+
   if(!req.file) {
     return res.sendStatus(400);
   }
@@ -59,10 +59,11 @@ app.post('/api/items', async (req, res) => {
     rent: req.body.rent,
     path: req.body.path,
 
-    description: req.body.description,
   });
+  console.log("in the post going to try 2 save");
   try {
     await item.save();
+    console.log("save");
     res.send(item);
   } catch (error) {
     console.log(error);
