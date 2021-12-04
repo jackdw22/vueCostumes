@@ -18,11 +18,11 @@
         </div>
         <div class="pure-g">
           <p class="pure-u">Price:</p>
-          <input class="pure-u" v-model="price" placehold = "Price">
+          <input class="pure-u" v-model="price" placeholder="Price">
         </div>
         <div class="pure-g">
           <p class="pure-u">Rent Price:</p>
-          <input class="pure-u" v-model="rent" placehold = "Rent">
+          <input class="pure-u" v-model="rent" placeholder="Rent">
         </div>
 
         <input type="file" accept="image/*" name="photo" @change="fileChanged">
@@ -31,8 +31,36 @@
         </div>
       </div>
       <div class="pure-u-1-2">
-        <h2>Delete Stuff</h2>
+        <div class="items" v-if="items.length>0">
+        <h2>Delete/Edit Stuff</h2>
+        <table class="pure-table editTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Rent Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="item" v-for="item in items" :key="item.id" @click="selectItem(item)">
+            <td>{{item.name}}</td><td>{{item.price}}</td><td>{{item.rent}}</td>
+          </tr>
+        </tbody>
+        </table>
+        </div>
       </div>
+    </div>
+    <div class="costume" v-if="item">
+        <div class="info">
+            <h1>{{item.name}}</h1>
+        </div>
+        <div class="image">
+            <img :src="item.path" class="pure-img">
+        </div>
+        <div>
+          <p>Price: {{item.price}}</p>
+          <p>Rent Price: {{item.rent}}</p>
+        </div>
     </div>
   </div>
 
@@ -43,7 +71,13 @@
 .upload {
 
 }
-
+.editTable{
+  margin: 0 auto;
+}
+.editTable tbody tr:hover{
+  background-color: #D3D3D3;
+  color: #f6921d;
+}
 
 </style>
 
@@ -58,7 +92,16 @@ export default {
       name:"",
       price:"",
       rent:"",
+      item:null,
+      items:null,
+      //length:0,
       }
+    },
+    computed: {
+
+    },
+    created(){
+      this.getItems();
     },
     methods:{
       fileChanged(event){
@@ -67,10 +110,9 @@ export default {
       async addItem(){
     //  await axios.post('/api/testme',this.name);
       const formData = new FormData();
+      //TODO add data validation for inputs
       formData.append('photo', this.file, this.file.name)
-      console.log('herehere');
        let r1 = await axios.post('/api/photos', formData);
-       console.log('postyyy');
        let r2 = await axios.post('/api/items',{
           type: this.type,
           name: this.name,
@@ -79,15 +121,28 @@ export default {
           path: r1.data.path
         });
         console.log(r1.data.path);
-        return r2;
+        this.item = r2.data;
 
-      }
+      },
+      selectItem(item){
+        this.item = item;
+      },
+      async getItems(){
+        try {
+          let response = await axios.get("/api/items");
+          this.items = response.data;
+          console.log(this.items);
+          console.log(this.items.length);
+          return true;
+        }
+        catch (error) {
+          //console.log(error);
+        }
+      },
     },
     components: {
 
     },
-    computed: {
 
-    },
 }
 </script>
