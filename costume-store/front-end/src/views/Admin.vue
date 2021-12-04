@@ -69,7 +69,16 @@
       </div>
     </div>
     <div v-else>
-
+      <p>Promo Code</p>
+      <input class="pure-u" v-model="code" placeholder="Code">
+      <p>Discount Amount</p>
+      <input v-model="discount" placeholder="Discount">
+      <br>
+      <input type="button" @click="addPromo" value="Submit">
+      <div v-if="promo">
+        <p>Promo Code: {{promo.code}}</p>
+        <p>Discount: {{promo.discount}}</p>
+      </div>
     </div>
   </div>
 
@@ -103,8 +112,10 @@ export default {
       rent:"",
       item:null,
       items:null,
-      addWhat:true,
-      //length:0,
+      addWhat:false,
+      code:"",
+      discount:"",
+      promo:null,
       }
     },
     computed: {
@@ -121,7 +132,7 @@ export default {
     //  await axios.post('/api/testme',this.name);
       const formData = new FormData();
       //TODO add data validation for inputs
-      formData.append('photo', this.file, this.file.name)
+      formData.append('photo', this.file, this.file.name);
        let r1 = await axios.post('/api/photos', formData);
        let r2 = await axios.post('/api/items',{
           type: this.type,
@@ -148,6 +159,13 @@ export default {
         catch (error) {
           //console.log(error);
         }
+      },
+      async addPromo(){
+        let response = await axios.post('/api/promos',{
+          code:this.code,
+          discount:this.discount
+        });
+        this.promo = response.data;
       },
       itemMe(){this.addWhat=true;},
       promoMe(){this.addWhat=false;},

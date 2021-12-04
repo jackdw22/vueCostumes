@@ -40,6 +40,7 @@ const promoSchema = new mongoose.Schema({
 
 
 const Item = mongoose.model('Item', itemSchema);
+const Promo = mongoose.model('Promo', promoSchema);
 
 app.post('/api/photos', upload.single('photo'), async (req, res) => {
 
@@ -114,7 +115,23 @@ app.put('/api/items/:id', async (req,res) => {
     console.log(error);
     res.sendStatus(500);
   }
-})
+});
+
+app.post('/api/promos', async(req,res) => {
+  const prom = new Promo({
+    code: req.body.code,
+    discount: req.body.discount,
+  });
+  try {
+  await prom.save();
+  res.send(prom);
+
+  }
+  catch(error){
+  console.log(error);
+  res.sendStatus(500);
+}
+});
 
 
 app.listen(3000, () => console.log('Server listening on port 3000!'));
