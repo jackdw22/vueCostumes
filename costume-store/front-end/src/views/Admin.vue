@@ -193,6 +193,7 @@ export default {
         });
         console.log(r1.data.path);
         this.item = r2.data;
+        this.items.append(this.item); 
 
       },
       selectItem(item){

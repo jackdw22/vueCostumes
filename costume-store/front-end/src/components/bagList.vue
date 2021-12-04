@@ -8,7 +8,7 @@
                     <p>{{costume.sale}}</p>
                 </div>
                 <div class="image">
-                    <img :src="'/assets/images/shop/'+costume.image" class="pure-img">
+                    <img :src="costume.path" class="pure-img">
                 </div>
                 <div class="toggle">
                   <button class="auto" @click="rent(costume)">Rent</button>

@@ -5,15 +5,35 @@
 
 <script>
 import costumeList from "../components/costumeList.vue"
+import axios from "axios"; 
 export default {
     name: "Costumes",
     components: {
         costumeList
     },
+     created(){
+      this.getCostumes();
+    },
+    data (){
+        return {
+            costume: [],
+        }
+    }, 
     computed: {
         costumes(){
-            return this.$root.$data.costumes.filter(costume => costume.type === "costume");
+            return this.costume.filter(costume => costume.type === "costume");
         }
+    },
+    methods: {
+       async getCostumes() {
+        try {
+          let response = await axios.get('/api/items');
+          this.costume = response.data;
+          return true; 
+        }catch (error){
+          console.log(error); 
+        }
+      },
     },
 }
 </script>

@@ -1,12 +1,12 @@
 <template>
     <div class='wrapper'>
         <div class="costumes">
-            <div class="costume" v-for="costume in costumes" :key="costume.id">
+            <div class="costume" v-for="costume in costumes" :key="costume._id">
                 <div class="info">
                     <h1>{{costume.name}}</h1>
                 </div>
                 <div class="image">
-                    <img :src="'/assets/images/shop/'+costume.image" class="pure-img">
+                    <img :src="costume.path" class="pure-img">
                 </div>
                 <button class="auto" @click="add(costume)">Add to Cart</button>
             </div>
@@ -30,7 +30,7 @@ export default {
         if (index===-1){
         this.$root.$data.bag.push(item);
       }
-      }
+      },
     }
 
 }
