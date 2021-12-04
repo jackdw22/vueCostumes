@@ -133,5 +133,29 @@ app.post('/api/promos', async(req,res) => {
 }
 });
 
+app.get('/api/promos', async (req, res) => {
+  try {
+    let promos = await Promo.find();
+    res.send(promos);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
+app.delete('/api/promos/:id', async (req,res) => {
+  try {
+    console.log('indel');
+    await Promo.deleteOne({
+      _id: req.params.id
+    });
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
+
 
 app.listen(3000, () => console.log('Server listening on port 3000!'));

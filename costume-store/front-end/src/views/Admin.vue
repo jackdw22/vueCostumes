@@ -79,7 +79,27 @@
         <p>Promo Code: {{promo.code}}</p>
         <p>Discount: {{promo.discount}}</p>
       </div>
-    </div>
+      <div v-if="promos.length>0">
+        <div class="promos">
+          <p>Current Promos</p>
+            <table class="pure-table promoTable">
+              <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>Discount</th>
+                  <th></th>
+                </tr>
+              </thead>
+            <tbody>
+              <tr v-for="promo in promos" :key="promo.id">
+                <td>{{promo.code}}</td><td>{{promo.discount}}</td>
+                <td><input type="button" @click="deletePromo(promo)" value="Delete"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
   </div>
 
 
@@ -89,10 +109,19 @@
 .upload {
 
 }
-.editTable{
+.editTable {
   margin: 0 auto;
 }
+
 .editTable tbody tr:hover{
+  background-color: #D3D3D3;
+  color: #f6921d;
+}
+.promoTable {
+  margin: 0 auto;
+}
+
+.promoTable tbody tr:hover{
   background-color: #D3D3D3;
   color: #f6921d;
 }
@@ -116,6 +145,7 @@ export default {
       code:"",
       discount:"",
       promo:null,
+      promos:null,
       }
     },
     computed: {
@@ -123,6 +153,7 @@ export default {
     },
     created(){
       this.getItems();
+      this.getPromos();
     },
     methods:{
       fileChanged(event){
@@ -160,12 +191,33 @@ export default {
           //console.log(error);
         }
       },
+      async getPromos(){
+        try {
+          let response = await axios.get("/api/promos");
+          this.promos = response.data;
+        }
+        catch (error) {
+          //console.log(error);
+        }
+      },
       async addPromo(){
         let response = await axios.post('/api/promos',{
           code:this.code,
           discount:this.discount
         });
         this.promo = response.data;
+        this.getPromos();
+        this.code="";
+        this.discount="";
+      },
+      async deletePromo(promo){
+        try{
+          await axios.delete('/api/promos/'+promo._id);
+          this.getPromos();
+        }
+        catch(error){
+          console.log(error);
+        }
       },
       itemMe(){this.addWhat=true;},
       promoMe(){this.addWhat=false;},
