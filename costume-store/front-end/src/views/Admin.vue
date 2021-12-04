@@ -8,7 +8,7 @@
     <div v-if="addWhat==true">
     <div class="pure-g">
       <div class="pure-u-1-2">
-        <h2>Upload Stuff</h2>
+        <h2>{{buttonVal}} Stuff</h2>
         <div class="upload">
           <div class="pure-g">
               <p class="pure-u">Type</p>
@@ -29,9 +29,10 @@
           <p class="pure-u">Rent Price:</p>
           <input class="pure-u" v-model="rent" placeholder="Rent">
         </div>
-
+        <div v-if="!item">
         <input type="file" accept="image/*" name="photo" @change="fileChanged">
-        <button @click="addItem">Upload</button>
+      </div>
+        <button @click="doThing()">{{buttonVal}}</button>
           <!--add immage area -->
         </div>
       </div>
@@ -44,11 +45,13 @@
             <th>Name</th>
             <th>Price</th>
             <th>Rent Price</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           <tr class="item" v-for="item in items" :key="item.id" @click="selectItem(item)">
             <td>{{item.name}}</td><td>{{item.price}}</td><td>{{item.rent}}</td>
+            <td><input type="button" @click="deleteItem(item)" value="Delete"></td>
           </tr>
         </tbody>
         </table>
@@ -56,6 +59,7 @@
       </div>
     </div>
       <div class="costume" v-if="item">
+        <input type="button" @click="deselect" value="Deselect Item">
           <div class="info">
               <h1>{{item.name}}</h1>
           </div>
@@ -141,7 +145,7 @@ export default {
       rent:"",
       item:null,
       items:null,
-      addWhat:false,
+      addWhat:true,
       code:"",
       discount:"",
       promo:null,
@@ -149,7 +153,14 @@ export default {
       }
     },
     computed: {
-
+      buttonVal(){
+        if(this.item){
+          return "Edit";
+        }
+        else{
+          return "Upload";
+        }
+      }
     },
     created(){
       this.getItems();
@@ -158,6 +169,14 @@ export default {
     methods:{
       fileChanged(event){
         this.file = event.target.files[0];
+      },
+      doThing(){
+        if(this.item){
+          this.editItem();
+        }
+        else{
+          this.addItem();
+        }
       },
       async addItem(){
     //  await axios.post('/api/testme',this.name);
@@ -178,23 +197,63 @@ export default {
       },
       selectItem(item){
         this.item = item;
+        this.type = item.type;
+        this.name = item.name;
+        this.price = item.price;
+        this.rent = item.rent;
       },
       async getItems(){
         try {
           let response = await axios.get("/api/items");
           this.items = response.data;
-          console.log(this.items);
-          console.log(this.items.length);
+          this.item=null;
           return true;
         }
         catch (error) {
           //console.log(error);
         }
       },
+      async deleteItem(item){
+        try {
+          await axios.delete('/api/items/'+item._id);
+          this.getItems();
+          this.clearVals();
+        }
+        catch(error){
+          console.log(error);
+        }
+      },
+      async editItem(){
+
+        try{
+
+           await axios.put('/api/items/'+this.item._id, {
+                type: this.type,
+                name: this.name,
+                price: this.price,
+                rent: this.rent,
+
+          });
+          this.getItems();
+          this.clearVals();
+
+        }
+        catch(error){
+          console.log(error);
+        }
+      },
+      clearVals(){
+        this.type="";
+        this.name="";
+        this.price="";
+        this.rent="";
+        this.path="";
+      },
       async getPromos(){
         try {
           let response = await axios.get("/api/promos");
           this.promos = response.data;
+          this.promo=null;
         }
         catch (error) {
           //console.log(error);
@@ -221,6 +280,7 @@ export default {
       },
       itemMe(){this.addWhat=true;},
       promoMe(){this.addWhat=false;},
+      deselect(){this.item=null; this.clearVals();},
     },
     components: {
 

@@ -106,8 +106,10 @@ app.put('/api/items/:id', async (req,res) => {
      const item = await Item.findOne({
       _id: req.params.id
     });
-    item.title = req.body.title;
-    item.description = req.body.description;
+    item.type = req.body.type;
+    item.name = req.body.name;
+    item.price = req.body.price;
+    item.rent = req.body.rent;
     await item.save();
     res.sendStatus(200);
   }
@@ -145,7 +147,6 @@ app.get('/api/promos', async (req, res) => {
 
 app.delete('/api/promos/:id', async (req,res) => {
   try {
-    console.log('indel');
     await Promo.deleteOne({
       _id: req.params.id
     });
