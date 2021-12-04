@@ -1,6 +1,11 @@
 <template>
   <div>
     <h1>Admin Page</h1>
+    <div class="toggle">
+      <input type="button" name="Add Item" value="Add Item" @click="itemMe">
+      <input type="button" name="Add Promo" value="Add Promo Code" @click="promoMe">
+    </div>
+    <div v-if="addWhat==true">
     <div class="pure-g">
       <div class="pure-u-1-2">
         <h2>Upload Stuff</h2>
@@ -50,17 +55,21 @@
         </div>
       </div>
     </div>
-    <div class="costume" v-if="item">
-        <div class="info">
-            <h1>{{item.name}}</h1>
-        </div>
-        <div class="image">
-            <img :src="item.path" class="pure-img">
-        </div>
-        <div>
-          <p>Price: {{item.price}}</p>
-          <p>Rent Price: {{item.rent}}</p>
-        </div>
+      <div class="costume" v-if="item">
+          <div class="info">
+              <h1>{{item.name}}</h1>
+          </div>
+          <div class="image">
+              <img :src="item.path" class="pure-img">
+          </div>
+          <div>
+            <p>Price: {{item.price}}</p>
+            <p>Rent Price: {{item.rent}}</p>
+          </div>
+      </div>
+    </div>
+    <div v-else>
+
     </div>
   </div>
 
@@ -94,6 +103,7 @@ export default {
       rent:"",
       item:null,
       items:null,
+      addWhat:true,
       //length:0,
       }
     },
@@ -139,6 +149,8 @@ export default {
           //console.log(error);
         }
       },
+      itemMe(){this.addWhat=true;},
+      promoMe(){this.addWhat=false;},
     },
     components: {
 

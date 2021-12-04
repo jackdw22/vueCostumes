@@ -30,7 +30,14 @@ const itemSchema = new mongoose.Schema({
   rent: String,
   path: String,
   type: String,
-});
+},{collection: 'items'});
+
+const promoSchema = new mongoose.Schema({
+  code: String,
+  discount: String,
+},{collection: 'promos'});
+
+
 
 const Item = mongoose.model('Item', itemSchema);
 
