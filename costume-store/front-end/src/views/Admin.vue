@@ -7,34 +7,31 @@
     </div>
     <div v-if="addWhat==true">
     <div class="pure-g">
+      
       <div class="pure-u-1-2">
         <h2>{{buttonVal}} Stuff</h2>
-        <div class="upload">
-          <div class="pure-g">
-              <p class="pure-u">Type</p>
-            <select class="pure-u" v-model="type" name="types">
-              <option value = "hat">Hat</option>
-              <option value = "costume">Costume</option>
-            </select>
-          </div>
-          <div class="pure-g">
-            <p class="pure-u">Title:  </p>
-          <input class="pure-u" v-model="name" placeholder="Title">
-        </div>
-        <div class="pure-g">
-          <p class="pure-u">Price:</p>
-          <input class="pure-u" v-model="price" placeholder="Price">
-        </div>
-        <div class="pure-g">
-          <p class="pure-u">Rent Price:</p>
-          <input class="pure-u" v-model="rent" placeholder="Rent">
-        </div>
-        <div v-if="!item">
+        <div class="pure-form pure-form-stacked" id='stuff'>
+            <label for="type">Type</label>
+            <select v-model="type" name="types">
+                <option value = "hat">Hat</option>
+                <option value = "costume">Costume</option>
+              </select>
+             <label for="name">Title</label>
+             <input class="pure-u" v-model="name" placeholder="Title">
+             <label for="price">Price</label>
+             <input class="pure-u" v-model="price" placeholder="Price">
+             <label for="rentPrice">Rent Price</label>
+             <input class="pure-u" v-model="rent" placeholder="Rent">
+           <div v-if="!item">
         <input type="file" accept="image/*" name="photo" @change="fileChanged">
       </div>
         <button @click="doThing()">{{buttonVal}}</button>
-          <!--add immage area -->
-        </div>
+          
+      </div>
+    
+        
+     
+    
       </div>
       <div class="pure-u-1-2">
         <div class="items" v-if="items.length>0">
@@ -110,8 +107,8 @@
 </template>
 <style scoped>
 
-.upload {
-
+.costume{
+  margin: 0 auto; 
 }
 .editTable {
   margin: 0 auto;
@@ -128,6 +125,12 @@
 .promoTable tbody tr:hover{
   background-color: #D3D3D3;
   color: #f6921d;
+}
+#stuff{
+  text-align: left;
+  width: 80%; 
+  margin: 0 auto; 
+  margin-bottom: 10px; 
 }
 
 </style>

@@ -99,6 +99,8 @@ nav{
 }
 .footer{
   background-color: #602749;
+  margin: 0; 
+  padding: 0; 
 }
 .footPart{
   color: #f6921d;
@@ -169,8 +171,7 @@ nav{
   .footer{
     display: grid;
     grid-template-columns: repeat(2, 2fr);
-    grid-gap: 20px;
-    margin: 20px;
+    grid-gap: 20px; 
   }
 }
 

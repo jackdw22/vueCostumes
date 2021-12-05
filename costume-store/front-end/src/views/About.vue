@@ -53,10 +53,11 @@
 #toStore{
   background-color: white;
   width: 70%;
-  margin: 0 auto;
+  margin: auto;
   font-size: 20pt;
   color: black;
   border: 2px solid black;
+  margin-bottom: 1em; 
 
 }
 
@@ -69,7 +70,7 @@
   margin: 15px 0;
 }
 .otherPage{
-  margin-bottom: 4em;
+  margin-bottom: 2 em;
   background-color:lightgray
 }
 
@@ -101,5 +102,6 @@ a{
 a:hover{
   color: orange;
   font-weight: bold;
+ 
 }
 </style>
