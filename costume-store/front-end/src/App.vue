@@ -34,7 +34,7 @@
       </div>
       <div class='footPart'>
         <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fab fa-3x fa-facebook"></i></a>
-        <a href="http://https://github.com/jackdw22/vueCostumes" target="_blank" rel="noopener noreferrer"><i class="fab fa-3x fa-github"></i></a>
+        <a href="https://github.com/jackdw22/vueCostumes" target="_blank" rel="noopener noreferrer"><i class="fab fa-3x fa-github"></i></a>
         <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fab fa-3x fa-instagram"></i></a>
 
 
@@ -99,8 +99,8 @@ nav{
 }
 .footer{
   background-color: #602749;
-  margin: 0; 
-  padding: 0; 
+  margin: 0;
+  padding: 0;
 }
 .footPart{
   color: #f6921d;
@@ -171,7 +171,7 @@ nav{
   .footer{
     display: grid;
     grid-template-columns: repeat(2, 2fr);
-    grid-gap: 20px; 
+    grid-gap: 20px;
   }
 }
 
