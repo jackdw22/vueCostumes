@@ -7,7 +7,7 @@
     </div>
     <div v-if="addWhat==true">
     <div class="pure-g">
-      
+
       <div class="pure-u-1-2">
         <h2>{{buttonVal}} Stuff</h2>
         <div class="pure-form pure-form-stacked" id='stuff'>
@@ -26,12 +26,12 @@
         <input type="file" accept="image/*" name="photo" @change="fileChanged">
       </div>
         <button @click="doThing()">{{buttonVal}}</button>
-          
+
       </div>
-    
-        
-     
-    
+
+
+
+
       </div>
       <div class="pure-u-1-2">
         <div class="items" v-if="items.length>0">
@@ -40,6 +40,7 @@
         <thead>
           <tr>
             <th>Name</th>
+            <th>Type</th>
             <th>Price</th>
             <th>Rent Price</th>
             <th></th>
@@ -47,7 +48,7 @@
         </thead>
         <tbody>
           <tr class="item" v-for="item in items" :key="item.id" @click="selectItem(item)">
-            <td>{{item.name}}</td><td>{{item.price}}</td><td>{{item.rent}}</td>
+            <td>{{item.name}}</td><td>{{item.type}}</td><td>{{item.price}}</td><td>{{item.rent}}</td>
             <td><input type="button" @click="deleteItem(item)" value="Delete"></td>
           </tr>
         </tbody>
@@ -108,7 +109,7 @@
 <style scoped>
 
 .costume{
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 .editTable {
   margin: 0 auto;
@@ -128,9 +129,9 @@
 }
 #stuff{
   text-align: left;
-  width: 80%; 
-  margin: 0 auto; 
-  margin-bottom: 10px; 
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }
 
 </style>
@@ -185,6 +186,14 @@ export default {
     //  await axios.post('/api/testme',this.name);
       const formData = new FormData();
       //TODO add data validation for inputs
+
+      if(isNaN(this.price)){
+
+        return;
+      }
+      if(isNaN(this.rent)){
+        return;
+      }
       formData.append('photo', this.file, this.file.name);
        let r1 = await axios.post('/api/photos', formData);
        let r2 = await axios.post('/api/items',{
@@ -196,7 +205,7 @@ export default {
         });
         console.log(r1.data.path);
         this.item = r2.data;
-        this.items.append(this.item); 
+        this.getItems();
 
       },
       selectItem(item){
@@ -209,8 +218,8 @@ export default {
       async getItems(){
         try {
           let response = await axios.get("/api/items");
+          this.items=null;
           this.items = response.data;
-          this.item=null;
           return true;
         }
         catch (error) {
@@ -222,13 +231,19 @@ export default {
           await axios.delete('/api/items/'+item._id);
           this.getItems();
           this.clearVals();
+          this.item=null;
         }
         catch(error){
           console.log(error);
         }
       },
       async editItem(){
-
+        if(isNaN(this.price)){
+          return;
+        }
+        if(isNaN(this.rent)){
+          return;
+        }
         try{
 
            await axios.put('/api/items/'+this.item._id, {

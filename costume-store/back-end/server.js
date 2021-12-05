@@ -52,12 +52,7 @@ app.post('/api/photos', upload.single('photo'), async (req, res) => {
   });
 });
 
-app.post('/api/testme', async (req, res) => {
-  console.log('made it to test');
-  console.log('given this');
-  console.log(req.body);
-  res.sendStatus(200);
-});
+
 
 app.post('/api/items', async (req, res) => {
   const item = new Item({
@@ -68,10 +63,9 @@ app.post('/api/items', async (req, res) => {
     path: req.body.path,
 
   });
-  console.log("in the post going to try 2 save");
+
   try {
     await item.save();
-    console.log("save");
     res.send(item);
   } catch (error) {
     console.log(error);

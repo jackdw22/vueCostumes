@@ -35,13 +35,13 @@
 
           <button @click="toggleSubmit()">Checkout</button>
         </div>
-       
+
          <div class="final" v-if="submit">
             <h1>One more Step...</h1>
             <h3>Add your payment/shipping info below</h3>
             <form class="pure-form pure-form-stacked" id="billing">
               <fieldset>
-              <div class="pure-g">  
+              <div class="pure-g">
                   <div class="pure-u">
                       <label for="multi-first-name">First Name</label>
                       <input type="text" id="multi-first-name" class="pure-u-23-24" required=""/>
@@ -70,8 +70,8 @@
                       <label for="multi-city">Card #</label>
                       <input type="text" id="multi-city" class="pure-u-23-24" required=""/>
                   </div>
-            
-            
+
+
         </div>
         <label for="multi-terms" class="pure-checkbox">
             <input type="checkbox" id="multi-terms" /> Receive offers and news from Christy's Costumes
@@ -81,8 +81,8 @@
 
             </form>
 
-            
-            
+
+
         </div>
     </div>
 
@@ -99,8 +99,8 @@ export default {
     data(){
       return{
         submit: false,
-        promo: '', 
-        discount: 1, 
+        promo: '',
+        discount: 1,
         promos: [],
       }
     },
@@ -164,29 +164,31 @@ export default {
     },
     toggleSubmit(){
       if(this.submit){
-        this.submit = false; 
+        this.submit = false;
       }else{
-        this.submit = true; 
+        this.submit = true;
       }
     },
      async getPromos() {
         try {
           let response = await axios.get('/api/promos');
           this.promos = response.data;
-          return true; 
+          return true;
         }catch (error){
-          console.log(error); 
+          console.log(error);
         }
       },
       applyDiscount(){
         for (const promo of this.promos){
           if (promo.code === this.promo){
-            this.discount = 1 - promo.discount.slice(0,-1) / 100; 
+          //  console.log(100 - promo.discount.slice(0,-1));
+         //   console.log(promo.discount);
+            this.discount = (100 - promo.discount) / 100;
           }
         }
       }
-    }, 
-    
+    },
+
     computed: {
 
     }
@@ -207,14 +209,14 @@ export default {
 }
 
 #promo{
-  display: inline; 
-  width: 75px; 
-  margin-left: 5px; 
+  display: inline;
+  width: 75px;
+  margin-left: 5px;
   border-radius: 3pt;
-  font-size: 12pt; 
-  height: 25px; 
-  margin-bottom: 5px; 
-  
+  font-size: 12pt;
+  height: 25px;
+  margin-bottom: 5px;
+
 }
 button {
   height: 50px;
@@ -263,7 +265,7 @@ img{
 #billing{
   text-align: left;
   width: 90%;
-  margin: 0 auto; 
+  margin: 0 auto;
   }
 
 </style>
